@@ -1,0 +1,77 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$GND-HOME-primary: mat.define-palette(mat.$cyan-palette, 500);
+$GND-HOME-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$GND-HOME-warn: mat.define-palette(mat.$red-palette);
+
+$my-custom-level: mat.define-typography-level($font-family: 'iransans, Tahoma, Roboto, "Helvetica Neue", sans-serif',
+    $font-weight: 400,
+    $font-size: 1rem,
+    $line-height: 1,
+    $letter-spacing: normal,
+  );
+
+$GND-HOME-typography: mat.define-typography-config($font-family: 'iransans, Tahoma, Roboto, "Helvetica Neue", sans-serif',
+    $body-1: mat.define-typography-level(14px, 19px, 400),
+    $button: mat.define-typography-level(16px, 21px, 400));
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$GND-HOME-theme: mat.define-light-theme((color: (primary: $GND-HOME-primary,
+        accent: $GND-HOME-accent,
+        warn: $GND-HOME-warn,
+      ),
+      typography: $GND-HOME-typography,
+    ));
+
+@include mat.typography-hierarchy($GND-HOME-theme);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($GND-HOME-theme);
+
+body {
+  margin: 0;
+  /* font-family: iransans, Tahoma, Roboto, "Helvetica Neue", sans-serif; */
+}
+
+.mat-stepper-vertical,
+.mat-stepper-horizontal {
+  font-family: iransans, Tahoma, Roboto, "Helvetica Neue", sans-serif !important
+}
+
+// [dir=rtl] .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__leading,
+// .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__leading[dir=rtl] {
+//   border-top-right-radius: 12px !important;
+//   border-bottom-right-radius: 12px !important;
+// }
+
+// [dir=rtl] .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__trailing,
+// .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__trailing[dir=rtl] {
+//   border-top-left-radius: 12px !important;
+//   border-bottom-left-radius: 12px !important;
+// }
+
+.mat-mdc-dialog-container .mdc-dialog__surface,
+.mat-mdc-card,
+.mat-mdc-outlined-button,
+.mat-mdc-button,
+.mat-mdc-unelevated-button {
+  border-radius: 12px !important;
+}
+
+mat-drawer-container {
+  flex: 1 1 auto;
+}

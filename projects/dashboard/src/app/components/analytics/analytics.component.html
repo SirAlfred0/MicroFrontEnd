@@ -1,0 +1,10 @@
+<ul>
+    <ng-container *ngFor="let item of links">
+        <li style="padding: 0.5rem 0;"  >
+            <a [routerLink]="[item.link]">
+                {{item.name}}
+            </a>
+        </li>
+    </ng-container>
+</ul>
+<p>analytics works!</p>

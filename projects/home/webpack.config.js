@@ -2,10 +2,10 @@ const { shareAll, withModuleFederationPlugin } = require('@angular-architects/mo
 
 module.exports = withModuleFederationPlugin({
 
-  remotes: {
-    "dashboard": "http://localhost:4201/main.js",
-    "panel": "http://localhost:4202/main.js",
-    "home": "http://localhost:4203/main.js",        
+  name: 'home',
+
+  exposes: {
+    './Component': './projects/home/src/app/app.component.ts',
   },
 
   shared: {

@@ -6,11 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-  sideNavState = true;
-
-  onChangeSideNavState()
-  {
-    this.sideNavState = !this.sideNavState;
-  }
+  title = 'home';
 }
