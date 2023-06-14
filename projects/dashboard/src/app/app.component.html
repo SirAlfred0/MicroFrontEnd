@@ -2,6 +2,16 @@
   <header class="header">
       dashboard
   </header>
+  <ng-container [ngTemplateOutlet]="(auth.user$ | async) != null ? isLoggedIn : null" [ngTemplateOutletContext]="{user: (auth.user$ | async)}"></ng-container>
+  <ng-template #isLoggedIn let-user="user">
+    <div>
+      <h2>this is logged in User Account</h2>
+      <p>name: {{user.firstName}}</p>
+      <p>last name: {{user.lastName}}</p>
+      <p>age: {{user.age}}</p>
+      <button (click)="logOut()">logout</button>
+    </div>
+  </ng-template>
   <div style="padding: 1rem;">
       <router-outlet></router-outlet>
   </div>

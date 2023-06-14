@@ -10,6 +10,7 @@ module.exports = withModuleFederationPlugin({
 
   shared: {
     ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
+    "auth": ({singleton: true, requiredVersion: '0', strictVersion: false})
   },
 
 });
