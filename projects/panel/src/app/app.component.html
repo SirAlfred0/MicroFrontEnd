@@ -9,5 +9,10 @@
   <button type="button" (click)="login()">access to Home Micro front-end</button>
 
   <button type="button" (click)="loginWithJohn()">Login With John User In dashboard</button>
+
+  <button (click)="onShowTime()">show time</button>
+  <div *ngIf="showTime">
+  {{date}}
+  </div>
   
 </main>

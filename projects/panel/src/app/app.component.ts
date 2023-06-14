@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'auth';
 import { IUser } from 'auth/lib/models/IUser.model';
+import * as moment from 'moment';
 
 const user: IUser = {
   firstName: 'John',
@@ -19,6 +20,8 @@ const user: IUser = {
 })
 export class AppComponent{
 
+  date: string = '';
+  showTime = false;
 
   constructor(
     private router: Router,
@@ -37,5 +40,15 @@ export class AppComponent{
   {
     this.auth.next(user);
     this.router.navigate(['/dashboard'])
+  }
+  
+  ngOnInit(): void {
+    this.date = moment().format('YYYY-MM-DD');
+  }
+
+  
+
+  onShowTime(): void {
+    this.showTime = true;
   }
 }

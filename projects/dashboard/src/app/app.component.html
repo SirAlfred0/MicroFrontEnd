@@ -12,6 +12,10 @@
       <button (click)="logOut()">logout</button>
     </div>
   </ng-template>
+  <button (click)="onShowTime()">show time</button>
+  <div *ngIf="showTime">
+    {{date}}
+  </div>
   <div style="padding: 1rem;">
       <router-outlet></router-outlet>
   </div>
