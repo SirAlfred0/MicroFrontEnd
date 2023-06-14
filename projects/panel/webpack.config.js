@@ -3,6 +3,7 @@ const { shareAll, withModuleFederationPlugin } = require('@angular-architects/mo
 module.exports = withModuleFederationPlugin({
 
   name: 'panel',
+  filename: 'remoteEntry.js',
 
   exposes: {
     './panel': './projects/panel/src/app/app.module.ts',

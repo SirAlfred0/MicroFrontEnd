@@ -3,6 +3,7 @@ const { shareAll, withModuleFederationPlugin } = require('@angular-architects/mo
 module.exports = withModuleFederationPlugin({
 
   name: 'dashboard',
+  filename: 'remoteEntry.js',
 
   exposes: {
     './dashboard': './projects/dashboard/src/app/app.module.ts',
