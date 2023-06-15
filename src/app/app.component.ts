@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'auth';
 import { IUser } from 'auth/lib/models/IUser.model';
+import { BroadCastChannelService } from 'cross-tab-communication';
 
 
 @Component({
@@ -13,7 +14,8 @@ export class AppComponent implements OnInit {
   user: IUser | null = null;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private broadCastService: BroadCastChannelService<string>
   )
   {}
 
@@ -29,6 +31,8 @@ export class AppComponent implements OnInit {
     this.authService.user$.subscribe((user: IUser | null) => {
       this.user = user;
     })
-    console.log(localStorage.getItem('token'));
+
+    this.broadCastService.createChannel('private_bus');
+    this.broadCastService.createChannel('public_bus');
   }
 }

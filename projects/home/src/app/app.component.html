@@ -9,5 +9,29 @@
     <a [routerLink]="['/panel']">redirect to another MFE</a>
     <br>
     {{message}}
+    <br>
+    <select [formControl]="formType">
+        <option value="private_bus">private bus</option>
+        <option value="public_bus">public bus</option>
+    </select>
+    <input  style="margin-top: 10rem;" type="text" [formControl]="formMessage" placeholder="enter some message" (keydown.enter)="onSendMessage()">
     
+    <div style="margin-top: 3rem;">
+        <h2>public names</h2>
+        <ul  style="margin-top: 1rem;">
+            <ng-container *ngFor="let item of publicNames">
+                <li>{{item}}</li>
+            </ng-container>
+        </ul>
+    </div>
+
+    <div style="margin-top: 3rem;">
+        <h2>private names</h2>
+        <ul  style="margin-top: 1rem;">
+            <ng-container *ngFor="let item of privateNames">
+                <li>{{item}}</li>
+            </ng-container>
+        </ul>
+    </div>
+   
 </main>
