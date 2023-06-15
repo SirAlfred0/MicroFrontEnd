@@ -19,7 +19,7 @@ export class AppComponent {
 
   constructor(
     private router: Router,
-    private broadCastService: BroadCastChannelService<string>
+    private broadCastService: BroadCastChannelService
   ){}
 
   ngOnInit(): void {
@@ -30,11 +30,11 @@ export class AppComponent {
       this.message = 'you are logged in';
     }
 
-    this.broadCastService.getChannel('private_bus').messages$.subscribe((data: string) => {
+    this.broadCastService.getChannel<string>('private_bus').messages$.subscribe((data: string) => {
       this.privateNames.push(data);
     })
 
-    this.broadCastService.getChannel('public_bus').messages$.subscribe((data: string) => {
+    this.broadCastService.getChannel<string>('public_bus').messages$.subscribe((data: string) => {
       this.publicNames.push(data);
     })
   }
@@ -42,7 +42,7 @@ export class AppComponent {
 
   onSendMessage()
   {
-    this.broadCastService.getChannel(this.formType.value).sendMessage(this.formMessage.value);
+    this.broadCastService.getChannel<string>(this.formType.value).sendMessage(this.formMessage.value);
     if(this.formType.value == 'public_bus')
     {
       this.publicNames.push(this.formMessage.value);
